@@ -1,4 +1,5 @@
 .banner-bottom {
-    border-bottom-right-radius: 50% 10%;
-    border-bottom-left-radius: 50% 10%;
+    /* border-bottom-right-radius: 50% 10%;
+    border-bottom-left-radius: 50% 10%; */
+    clip-path: ellipse(90rem 50% at 48% 33%);
 }
