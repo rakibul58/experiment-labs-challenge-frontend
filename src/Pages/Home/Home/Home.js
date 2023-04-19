@@ -10,13 +10,13 @@ const Home = () => {
         <div>
             <MyHelmet>Home</MyHelmet>
             <Banner />
-            <div className='my-[64px]'>
+            <div className='my-[150px]'>
                 <Stats />
             </div>
-            <div className='my-[64px]'>
+            <div className='my-[150px]'>
                 <CallToAction />
             </div>
-            <div className='my-[64px]'>
+            <div className='my-[150px]'>
                 <Feature />
             </div>
         </div>

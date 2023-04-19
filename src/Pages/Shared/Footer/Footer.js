@@ -24,7 +24,7 @@ const Footer = () => {
                             </div>
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 mt-24">
+                    <div className="grid grid-cols-1 mt-20">
                         <div>
                             <span>
                                 <div>
