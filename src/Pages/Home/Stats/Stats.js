@@ -9,7 +9,7 @@ const Stats = () => {
 
     return (
         <div>
-            <p className='text-center text-4xl tracking-widest'>The Hult Prize challenges young people around the <br /> world to solve the planet's most pressing issues <br /> through social entrepreneurship.</p>
+            <p className='text-center text-4xl tracking-widest break-words'>The Hult Prize challenges young people around the <br /> world to solve the planet's most pressing issues <br /> through social entrepreneurship.</p>
             <ScrollTrigger onEnter={() => setStartCounter(true)} onExit={() => setStartCounter(false)}>
                 <section class="p-6 text-gray-800 mt-20">
                     {
