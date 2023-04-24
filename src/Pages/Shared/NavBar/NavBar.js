@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/Logos/logo.png'
 import MyButton from '../../../components/MyButton';
 
 const NavBar = () => {
 
     const navItems = <>
-        <li><Link className='hover:text-primary bg-white'>Home</Link></li>
-        <li><Link className='hover:text-primary bg-white'>How It Works</Link></li>
-        <li><Link className='hover:text-primary bg-white'>Prize Winners</Link></li>
-        <li><Link className='hover:text-primary bg-white'>Stories</Link></li>
+        <li><NavLink to={'/about'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>About</NavLink></li>
+        <li><NavLink to={'/how-it-works'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>How It Works</NavLink></li>
+        <li><NavLink to={'/prize-winners'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Prize Winners</NavLink></li>
+        <li><NavLink to={'/stories'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Stories</NavLink></li>
     </>
     return (
         <div>
@@ -31,7 +31,7 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link><MyButton>Apply Now</MyButton></Link>
+                    <Link target='_blank' to={'/apply-now'}><MyButton>Apply Now</MyButton></Link>
                 </div>
             </div>
         </div>

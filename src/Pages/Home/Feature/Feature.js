@@ -14,7 +14,7 @@ const Feature = () => {
                             <Link className='flex items-center gap-4 transition ease-in-out delay-200 hover:gap-12 duration-100000 hover:transition-all hover:underline mt-12'>Download the Challenge <FaArrowRight /></Link>
                         </div>
                         <div aria-hidden="true" className="mt-10 lg:mt-0 lg:w-1/2">
-                            <img src="https://plus.unsplash.com/premium_photo-1661685876674-ab0db90d67ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="" className="mx-auto shadow-lg bg-gray-500 h-[270px] w-full bg-cover bg-center" />
+                            <img src="https://plus.unsplash.com/premium_photo-1661685876674-ab0db90d67ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="" className="mx-auto shadow-lg bg-gray-500 lg:min-h-[270px] max-h-[270px] w-full bg-cover bg-center" />
                         </div>
                     </div>
                     <div className="flex flex-col-reverse lg:gap-8 lg:flex-row-reverse lg:justify-center lg:items-start">
@@ -25,7 +25,7 @@ const Feature = () => {
                             <Link className='flex items-center gap-4 transition ease-in-out delay-200 hover:gap-12 duration-100000 hover:transition-all hover:underline mt-12'>Watch Global Finals! <FaArrowRight /></Link>
                         </div>
                         <div aria-hidden="true" className="mt-10 lg:mt-0 lg:w-1/2">
-                            <img src="https://www.rismedia.com/wp-content/uploads/2019/12/winning_team_1077521392.jpg" alt="" className="mx-auto shadow-lg bg-gray-500 h-[270px] w-full bg-cover bg-center" />
+                            <img src="https://www.rismedia.com/wp-content/uploads/2019/12/winning_team_1077521392.jpg" alt="" className="mx-auto shadow-lg bg-gray-500 lg:min-h-[270px] max-h-[270px] w-full bg-cover bg-center" />
                         </div>
                     </div>
                 </div>
