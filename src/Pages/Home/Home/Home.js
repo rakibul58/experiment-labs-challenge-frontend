@@ -8,16 +8,16 @@ import MyModal from '../MyModal/MyModal';
 import { useLocation } from 'react-router-dom';
 
 const Home = () => {
-    const pathname = useLocation();
+    // const pathname = useLocation();
 
-    useEffect(() => {
-        window.onload = function () {
-            let modal = document.getElementById("my-modal-3");
-            if (modal) {
-                modal.click();
-            }
-        }
-    },[pathname]);
+    // useEffect(() => {
+    //     window.onload = function () {
+    //         let modal = document.getElementById("my-modal-3");
+    //         if (modal) {
+    //             modal.click();
+    //         }
+    //     }
+    // },[pathname]);
 
     return (
         <div>
@@ -32,7 +32,7 @@ const Home = () => {
             <div className='my-[150px]'>
                 <Feature />
             </div>
-            <MyModal />
+            {/* <MyModal /> */}
         </div>
     );
 };

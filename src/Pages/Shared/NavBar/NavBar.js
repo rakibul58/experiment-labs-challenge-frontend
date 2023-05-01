@@ -10,6 +10,7 @@ const NavBar = () => {
         <li><NavLink to={'/how-it-works'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>How It Works</NavLink></li>
         <li><NavLink to={'/prize-winners'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Prize Winners</NavLink></li>
         <li><NavLink to={'/stories'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Stories</NavLink></li>
+        <li><span className='bg-white hover:text-primary'><label htmlFor="my-modal-3">Login</label></span></li>
     </>
     return (
         <div>
@@ -31,6 +32,9 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
+                    {/* <div className='mr-2'>
+                        <MyButton><label htmlFor="my-modal-3">Login</label></MyButton>
+                    </div> */}
                     <Link target='_blank' to={'/apply-now'}><MyButton>Apply Now</MyButton></Link>
                 </div>
             </div>
