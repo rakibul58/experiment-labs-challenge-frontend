@@ -1,16 +1,20 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../../../assets/Logos/logo.png'
 import MyButton from '../../../components/MyButton';
 
 const NavBar = () => {
+
+    const { pathname } = useLocation();
+
+    console.log(pathname);
 
     const navItems = <>
         <li><NavLink to={'/about'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>About</NavLink></li>
         <li><NavLink to={'/how-it-works'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>How It Works</NavLink></li>
         <li><NavLink to={'/prize-winners'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Prize Winners</NavLink></li>
         <li><NavLink to={'/stories'} className={({ isActive }) => (isActive ? 'text-primary hover:text-primary bg-white' : 'hover:text-primary bg-white')}>Stories</NavLink></li>
-        <li><span className='bg-white hover:text-primary'><label htmlFor="my-modal-3">Login</label></span></li>
+        {pathname === "/" && <li><span className='bg-white hover:text-primary'><label htmlFor="my-modal-3">Login</label></span></li>}
     </>
     return (
         <div>
@@ -38,6 +42,7 @@ const NavBar = () => {
                     <Link target='_blank' to={'/apply-now'}><MyButton>Apply Now</MyButton></Link>
                 </div>
             </div>
+
         </div>
     );
 };

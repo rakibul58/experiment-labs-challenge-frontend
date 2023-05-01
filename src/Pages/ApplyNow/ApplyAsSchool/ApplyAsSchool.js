@@ -158,7 +158,7 @@ const ApplyAsSchool = () => {
                         <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around gap-16'>
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text text-secondary-focus font-bold text-2xl">9. Login Email*</span>
+                                    <span className="label-text text-secondary-focus font-bold text-2xl">10. Login Email*</span>
                                 </label>
                                 <input {...register("email", { required: "Email is required" })} type="email" placeholder="Email" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
                                 {errors.email && <p className='text-error mt-3 font-semibold'>{errors.email.message}</p>}
@@ -166,7 +166,7 @@ const ApplyAsSchool = () => {
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text text-secondary-focus font-bold text-2xl">10. Password*</span>
+                                    <span className="label-text text-secondary-focus font-bold text-2xl">11. Password*</span>
                                 </label>
                                 <input {...register("password", {
                                     required: {
