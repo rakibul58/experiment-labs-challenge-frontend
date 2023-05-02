@@ -1,14 +1,62 @@
 import React from 'react';
 import MyHelmet from '../../../components/MyHelmet';
 import { Controller, useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import './style.css';
+import logo from '../../../assets/Logos/Group 2859891.png'
+import axios from 'axios';
 
 const ApplyAsSchool = () => {
 
-    const { register, handleSubmit, reset, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, reset, formState: { errors }, watch } = useForm({
+        mode: 'all', // THIS WILL ALLOW ALL-TIME VALIDATION (May have performance impact)
+        // resolver: yupResolver(ValidationSchema),
+    });
+    const { pathname } = useLocation();
 
-    const handleSubmitSchool = data => {
-        console.log(data);
-        reset();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    const handleSubmitSchool =  async(info) => {
+        // console.log("info --->", info);
+        const amount = 500;
+        const { data: { order } } = await axios.post('http://localhost:5000/api/checkout',{amount});
+        const { data: { key } } = await axios.get('http://localhost:5000/getKey');
+
+
+        console.log(order);
+
+        const options = {
+            key: key,
+            amount: order.amount,
+            currency: "INR",
+            name: "Experiment Labs",
+            description: "Test Transaction",
+            image: logo,
+            order_id: order.id,
+            callback_url: "http://localhost:5000/api/paymentVerification",
+            prefill: {
+                name: info.school_name,
+                email: info.email,
+                contact: info.school_contact
+            },
+            notes: {
+                address: "Razorpay Corporate Office"
+            },
+            theme: {
+                color: "#3EE8B5"
+            }
+        };
+
+        console.log(options);
+        
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+        // console.log(window);
+
+        // reset();
     }
 
     let password;
@@ -29,7 +77,7 @@ const ApplyAsSchool = () => {
             <div className='py-28'>
                 <form onSubmit={handleSubmit(handleSubmitSchool)} className="">
                     <div className="bg-secondary bg-opacity-10 py-16">
-                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-center gap-16'>
+                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-start gap-16'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-secondary-focus font-bold text-2xl">1. School Name*</span>
@@ -53,15 +101,12 @@ const ApplyAsSchool = () => {
                                         value: 10,
                                         message: "Too Many Numbers"
                                     }
-                                })} type="tel" placeholder="School Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
+                                })} type="number" placeholder="School Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
                                 {errors.school_contact && <p className='text-error mt-3 font-semibold'>{errors.school_contact.message}</p>}
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-secondary-focus font-bold text-2xl">3. Number of Participants*</span>
-                                </label>
-                                <label className="label">
-                                    <span className='label-text text-gray-500 italic'>Number of students who would participate (1 to 5)</span>
                                 </label>
                                 <input {...register("participants_number", {
                                     required: {
@@ -82,7 +127,7 @@ const ApplyAsSchool = () => {
                         </div>
                     </div>
                     <div className="py-16">
-                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around gap-16'>
+                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-start gap-16'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-secondary-focus font-bold text-2xl">4. Team Captain's Name*</span>
@@ -106,7 +151,7 @@ const ApplyAsSchool = () => {
                                         value: 10,
                                         message: "Too Many Numbers"
                                     }
-                                })} type="tel" placeholder="Captain's Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
+                                })} type="number" placeholder="Captain's Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
                                 {errors.captain_contact && <p className='text-error mt-3 font-semibold'>{errors.captain_contact.message}</p>}
                             </div>
                             <div className="form-control w-full">
@@ -119,7 +164,7 @@ const ApplyAsSchool = () => {
                         </div>
                     </div>
                     <div className="bg-secondary bg-opacity-10 py-16">
-                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-center gap-16'>
+                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-start gap-16'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-secondary-focus font-bold text-2xl">7. Faculty Advisor's Name*</span>
@@ -142,7 +187,7 @@ const ApplyAsSchool = () => {
                                         value: 10,
                                         message: "Too Many Numbers"
                                     }
-                                })} type="tel" placeholder="Advisor's Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
+                                })} type="number" placeholder="Advisor's Phone Number" className="input-lg border-secondary border-0 border-b-2 focus:outline-none w-full bg-transparent" />
                                 {errors.advisor_contact && <p className='text-error mt-3 font-semibold'>{errors.advisor_contact.message}</p>}
                             </div>
                             <div className="form-control w-full">
@@ -155,7 +200,7 @@ const ApplyAsSchool = () => {
                         </div>
                     </div>
                     <div className="py-16">
-                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around gap-16'>
+                        <div className='px-10 md:px-40 flex flex-col lg:flex-row justify-around items-start gap-16'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text text-secondary-focus font-bold text-2xl">10. Login Email*</span>
@@ -198,7 +243,7 @@ const ApplyAsSchool = () => {
                         </div>
                     </div>
                     <div className='pt-10 w-full flex justify-center'>
-                        <input className='bg-gradient-to-r from-neutral via-secondary via-95% to-accent text-white text-3xl btn capitalize border-0 px-8 rounded-3 hover:bg-gradient-to-l hover:shadow-2xl' type="submit" value="Submit" />
+                        <input className='bg-gradient-to-r from-neutral via-secondary via-95% to-accent text-white text-3xl btn capitalize border-0 px-4 rounded-3 hover:bg-gradient-to-l hover:shadow-2xl' type="submit" value="Continue to Payment" />
                     </div>
                 </form>
             </div>
